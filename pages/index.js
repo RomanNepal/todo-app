@@ -1,9 +1,11 @@
 import Head from "next/head";
 import Image from "next/image";
-
+import { FaHome } from "react-icons/fa";
+import { BsFillCheckCircleFill, BsStack } from "react-icons/bs";
 import styled, { StyleSheetManager } from "styled-components";
 import PrimaryButton from "../components/Button/PrimaryButton";
 import SecondaryButton from "../components/Button/SecondaryButton";
+import Link from "next/link";
 const BTN = styled.button`
   /* Adapt the colors based on primary prop */
   font-size: 1em;
@@ -12,6 +14,15 @@ const BTN = styled.button`
   border: 2px solid palevioletred;
   border-radius: 3px;
   background-color: red;
+`;
+
+const Text = styled.text`
+  font-family: "Inter";
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: black;
 `;
 export default function Home() {
   return (
@@ -22,9 +33,51 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <div
+        style={{
+          padding: "20px",
+          display: "flex",
+          flexDirection: "column",
+          gap: "1rem",
+          width: "20vh",
+          height: "90vh",
+          borderRight: "1px solid",
+          borderColor: "#f1f1f1",
+        }}
+      >
+        <Image height={"30"} width={"75"} src={"/logo.png"}></Image>
+        <StyledLink href={"/"}>
+          <div
+            style={{
+              backgroundColor: "#F1F1F1",
+              display: "flex",
+              alignItems: "center",
+              gap: "1rem",
+              padding: "8px",
+              borderRadius: "8px",
+            }}
+          >
+            <BsStack size={"20px"} />
+            <Text>Tasks</Text>
+          </div>
+        </StyledLink>
 
-      <PrimaryButton>Primary Button</PrimaryButton>
-      <SecondaryButton>Secondary Button</SecondaryButton>
+        <StyledLink href={"/"}>
+          <div
+            style={{
+              // backgroundColor: "#F1F1F1",
+              display: "flex",
+              alignItems: "center",
+              gap: "1rem",
+              padding: "8px",
+              borderRadius: "8px",
+            }}
+          >
+            <BsFillCheckCircleFill size={"20px"} />
+            <Text>Completed</Text>
+          </div>
+        </StyledLink>
+      </div>
     </>
   );
 }
